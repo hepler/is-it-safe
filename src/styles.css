@@ -21,37 +21,23 @@ header {
     text-align: center;
 }
 
-button {
-    position: relative;
-    vertical-align: top;
-    padding: 0;
-    border: 2px solid;
-
-    margin: 10px 0;
-    width: 49%;
-    height: 40px;
-
+#site-report {
     font-size: 14px;
     text-align: center;
-    cursor: pointer;
+
+    padding: 5px;
+    background-color: #cdcdcd;
+    border: 1px #ababab;
+    border-radius: 5px;
 }
 
-#normal {
-    background: #99C299;
-    border-color: #197519;
-    color: #197519;
+#sitename {
+    text-align: center;
+    margin: 15px;
+    font-size: 15px;
+    font-weight: bold;
 }
 
-#normal:hover {
-    background-color: #66A366;
-}
+#mfa-report {
 
-#incog {
-    background: #D1B2F0;
-    border-color: #5200A3;
-    color: #5200A3;
-}
-
-#incog:hover {
-    background-color: #944DDB;
 }
