@@ -112,3 +112,13 @@ chrome.tabs.query({active:true}, function(tabs) {
         // Show no site data element.
     });
 })
+
+document.addEventListener('DOMContentLoaded', function () {
+      document.querySelector('#more').addEventListener('click', openMorePage);
+});
+
+function openMorePage() {
+    var link = "more.html"
+    newWindow = window.open(link, '_blank');
+    newWindow.focus();
+}

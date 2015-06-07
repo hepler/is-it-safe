@@ -1,0 +1,27 @@
+/*
+ * INDEX: MAIN EXTENSION VIEW
+ */
+
+body {
+    background-color: #B5E2BB;
+    font-family: 'Open Sans', sans-serif;
+}
+
+header {
+    text-align: center;
+    font-size: 150px;
+    font-weight: bolder;
+    color: #FFFFFF;
+}
+
+#wrapper {
+    width: 85%;
+    margin: 0 auto;
+    font-size: 22px;
+    color: #0C5215;
+}
+
+small {
+    font-weight: bold;
+    font-style: italic;
+}
