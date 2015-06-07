@@ -1,0 +1,57 @@
+body {
+    width: 300px;
+    height: 500px;
+    background-color: #dedede;
+    overflow-x: hidden;
+    padding: 5px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#input {
+    width: 290px;
+    height: 30px;
+    resize: none;
+}
+
+#logo {
+    height: 75px;
+}
+
+header {
+    text-align: center;
+}
+
+button {
+    position: relative;
+    vertical-align: top;
+    padding: 0;
+    border: 2px solid;
+
+    margin: 10px 0;
+    width: 49%;
+    height: 40px;
+
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#normal {
+    background: #99C299;
+    border-color: #197519;
+    color: #197519;
+}
+
+#normal:hover {
+    background-color: #66A366;
+}
+
+#incog {
+    background: #D1B2F0;
+    border-color: #5200A3;
+    color: #5200A3;
+}
+
+#incog:hover {
+    background-color: #944DDB;
+}
