@@ -43,14 +43,14 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
 
             // Fill two factor auth support
             $(DOCUMENATION)
-            $(SMS)
-            $(PHONE_CALL)
-            $(EMAIL)
-            $(HARDWARE_TOKEN)
-            $(SOFTWARE_IMPLEMENTATION)
+            $(SMS).find('.support')
+            $(PHONE_CALL).find('.support')
+            $(EMAIL).find('.support')
+            $(HARDWARE_TOKEN).find('.support')
+            $(SOFTWARE_IMPLEMENTATION).find('.support')
 
             // Fill sha information
-            $(SHA_STATUS)
+            $(SHA_STATUS).find('.support')
 
             // Fill site information
             $(NAME)
