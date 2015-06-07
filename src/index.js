@@ -18,10 +18,24 @@ var TWITTER_HANDLE = '.twitter_handle';
 
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
+
+});
+
+chrome.tabs.query({active:true}, function(tabs) {
+    var tab;
+    if (tabs.length) {
+        tab = tabs[0];
+    } else {
+        return;
+    }
+
     // Hack to get domain from url.
     // http://stackoverflow.com/questions/8498592/extract-root-domain-name-from-string
     var tmp = document.createElement('a');
     tmp.href=tab.url
+
+    console.log(tab);
+    console.log(tmp.href);
 
     var request = $.ajax({
       url: 'https://young-castle-3686.herokuapp.com/api/organization/',
@@ -31,8 +45,10 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
     });
 
     request.done(function(data) {
+        console.log(data);
+        console.log(data);
         if(data.length) {
-
+            console.log('Has Data')
             var organization = data[0];
             var mfaSupport = organization.mfa_support;
             var encryptionSupport = organization.encryption_support;
@@ -41,26 +57,53 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
             console.log(mfaSupport);
             console.log(encryptionSupport);
 
-            // Fill two factor auth support
-            $(DOCUMENATION)
-            $(SMS).find('.support')
-            $(PHONE_CALL).find('.support')
-            $(EMAIL).find('.support')
-            $(HARDWARE_TOKEN).find('.support')
-            $(SOFTWARE_IMPLEMENTATION).find('.support')
+            if(mfaSupport.sms) {
+                $(SMS).find('.support').addClass('fa fa-check');
+            } else {
+                $(SMS).find('.support').addClass('fa fa-ban');
+            }
+
+            if(mfaSupport.phone_call) {
+                $(PHONE_CALL).find('.support').addClass('fa fa-check');;
+            } else {
+                $(PHONE_CALL).find('.support').addClass('fa fa-ban');
+            }
+
+            if(mfaSupport.email) {
+                $(EMAIL).find('.support').addClass('fa fa-check');;
+            } else {
+                $(EMAIL).find('.support').addClass('fa fa-ban');
+            }
+
+            if(mfaSupport.hardware_token) {
+                $(HARDWARE_TOKEN).find('.support').addClass('fa fa-check');;
+            } else {
+                $(HARDWARE_TOKEN).find('.support').addClass('fa fa-ban');
+            }
+
+            if(mfaSupport.software_implementation) {
+                $(SOFTWARE_IMPLEMENTATION).find('.support').addClass('fa fa-check');;
+            } else {
+                $(SOFTWARE_IMPLEMENTATION).find('.support').addClass('fa fa-ban');
+            }
+
+
+
 
             // Fill sha information
-            $(SHA_STATUS).find('.support')
+            if(encryptionSupport.sha_status) {
+                $(SHA_STATUS).find('.support').addClass('fa fa-check');;
+            } else {
+                $(SHA_STATUS).find('.support').addClass('fa fa-ban');
+            }
 
             // Fill site information
-            $(NAME)
-            $(CATEGORY)
-            $(WEBSITE)
-            $(LOGO)
-            $(TWITTER_HANDLE)
+            $(NAME).html(organization.name);
+            $(LOGO).attr('src', organization.logo);
 
         } else {
             // Show no site information.
+            console.log('No Data');
         }
     });
 
@@ -68,4 +111,14 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
         // Recommend other sites.
         // Show no site data element.
     });
+})
+
+document.addEventListener('DOMContentLoaded', function () {
+      document.querySelector('#more').addEventListener('click', openMorePage);
 });
+
+function openMorePage() {
+    var link = "more.html"
+    newWindow = window.open(link, '_blank');
+    newWindow.focus();
+}

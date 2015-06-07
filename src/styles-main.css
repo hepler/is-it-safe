@@ -20,6 +20,9 @@ body {
 #logo {
     height: 75px;
 }
+#lock-logo {
+    height: 75px;
+}
 
 header {
     text-align: center;
