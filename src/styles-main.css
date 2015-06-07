@@ -17,11 +17,16 @@ body {
     resize: none;
 }
 
-#logo {
-    height: 75px;
-}
 #lock-logo {
     height: 75px;
+}
+
+.green {
+    color:green;
+}
+
+.red {
+    color:red;
 }
 
 header {
