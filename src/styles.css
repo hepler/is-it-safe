@@ -1,6 +1,6 @@
 body {
     width: 300px;
-    height: 500px;
+    height: 100%;
     background-color: #dedede;
     overflow-x: hidden;
     padding: 5px;
@@ -21,23 +21,35 @@ header {
     text-align: center;
 }
 
+#sitename {
+    text-align: center;
+    margin: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 #site-report {
     font-size: 14px;
-    text-align: center;
-
-    padding: 5px;
+    padding: 5px 5px 25px 5px;
     background-color: #cdcdcd;
     border: 1px #ababab;
     border-radius: 5px;
 }
 
-#sitename {
-    text-align: center;
-    margin: 15px;
-    font-size: 15px;
-    font-weight: bold;
+#site-report div {
+    padding-left: 0px;
 }
+
+
 
 #mfa-report {
 
+}
+
+.section {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px;
+    width: 100%;
+    background-color: #dedede;
 }
