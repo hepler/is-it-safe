@@ -58,33 +58,33 @@ chrome.tabs.query({active:true}, function(tabs) {
             console.log(encryptionSupport);
 
             if(mfaSupport.sms) {
-                $(SMS).find('.support').addClass('fa fa-check');
+                $(SMS).find('.support').addClass('fa fa-check green');
             } else {
-                $(SMS).find('.support').addClass('fa fa-ban');
+                $(SMS).find('.support').addClass('fa fa-ban red');
             }
 
             if(mfaSupport.phone_call) {
-                $(PHONE_CALL).find('.support').addClass('fa fa-check');;
+                $(PHONE_CALL).find('.support').addClass('fa fa-check green');;
             } else {
-                $(PHONE_CALL).find('.support').addClass('fa fa-ban');
+                $(PHONE_CALL).find('.support').addClass('fa fa-ban red');
             }
 
             if(mfaSupport.email) {
-                $(EMAIL).find('.support').addClass('fa fa-check');;
+                $(EMAIL).find('.support').addClass('fa fa-check green');;
             } else {
-                $(EMAIL).find('.support').addClass('fa fa-ban');
+                $(EMAIL).find('.support').addClass('fa fa-ban red');
             }
 
             if(mfaSupport.hardware_token) {
-                $(HARDWARE_TOKEN).find('.support').addClass('fa fa-check');;
+                $(HARDWARE_TOKEN).find('.support').addClass('fa fa-check green');;
             } else {
-                $(HARDWARE_TOKEN).find('.support').addClass('fa fa-ban');
+                $(HARDWARE_TOKEN).find('.support').addClass('fa fa-ban red');
             }
 
             if(mfaSupport.software_implementation) {
-                $(SOFTWARE_IMPLEMENTATION).find('.support').addClass('fa fa-check');;
+                $(SOFTWARE_IMPLEMENTATION).find('.support').addClass('fa fa-check green');;
             } else {
-                $(SOFTWARE_IMPLEMENTATION).find('.support').addClass('fa fa-ban');
+                $(SOFTWARE_IMPLEMENTATION).find('.support').addClass('fa fa-ban red');
             }
 
 
@@ -92,9 +92,9 @@ chrome.tabs.query({active:true}, function(tabs) {
 
             // Fill sha information
             if(encryptionSupport.sha_status) {
-                $(SHA_STATUS).find('.support').addClass('fa fa-check');;
+                $(SHA_STATUS).find('.support').addClass('fa fa-check green');;
             } else {
-                $(SHA_STATUS).find('.support').addClass('fa fa-ban');
+                $(SHA_STATUS).find('.support').addClass('fa fa-ban red');
             }
 
             // Fill site information
