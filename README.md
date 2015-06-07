@@ -1,2 +1,1 @@
-# is-it-safe
-Browser extension for the wins
+# is is safe
