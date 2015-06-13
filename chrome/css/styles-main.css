@@ -14,6 +14,7 @@ body {
     border-color: #ababab;
     border-radius: 2px;*/
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: #333333;
 }
 
 .boxShadow {
@@ -75,8 +76,6 @@ body {
     margin: 0 auto;
     height: 50px;
     padding: 5px 0 0 0;
-    font-size: 30px;
-    font-weight: bold;
     background-color: #cdcdcd;
 }
 
@@ -94,6 +93,8 @@ body {
 #site-name {
     float: left;
     padding: 10px 0 10px 30px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .info-wrapper {
@@ -111,7 +112,7 @@ body {
 
 .report-item {
      background-color: #cdcdcd;
-     margin: 2px 0;
+     margin: 2px;
      padding: 10px;
 
      text-align: left;
@@ -120,9 +121,9 @@ body {
      font-weight: bold;
 }
 
-.report-item:hover {
+/*.report-item:hover {
     background-color: #dedede;
-}
+}*/
 
 .report-item span {
     padding-left: 10px;
@@ -136,7 +137,18 @@ body {
 /*
  * no info page
  */
+#no-success {
+    /*margin: 30px 0;*/
+}
 
+#no-data {
+    text-align: center;
+}
+
+#no-data h1 {
+    margin: 5px 0;
+    font-weight: bolder;
+}
 
 
 /*
@@ -168,9 +180,18 @@ body {
     color: #ffffff;
 }
 
+.wide{
+    width: 100%;
+    background-color: #789EC1;
+}
+
 .btn:hover {
     background-color: #B5E2BB;
-    color: #788E77;
+    color: #333333;
+}
+
+.wide:hover {
+    background-color: #91B8D8;
 }
 
 

@@ -16,11 +16,6 @@ var WEBSITE = '#website';
 var LOGO = '#logo';
 var TWITTER_HANDLE = '.twitter_handle';
 
-// var sms = "hey hey hey";
-// var phone;
-// var email;
-
-
 chrome.tabs.query({active:true}, function(tabs) {
     var tab;
     if (tabs.length) {
@@ -59,12 +54,9 @@ chrome.tabs.query({active:true}, function(tabs) {
 
             if(mfaSupport.sms) {
                 $(SMS).find('.support').addClass('fa fa-check fa-2x green');
-                // sms = "you got an sms!"
             } else {
                 $(SMS).find('.support').addClass('fa fa-ban fa-2x red');
-                // sms = "hey there ain't no sms"
             }
-            // sms = "blah blah"
 
             if(mfaSupport.phone_call) {
                 $(PHONE_CALL).find('.support').addClass('fa fa-check fa-2x green');
@@ -101,12 +93,21 @@ chrome.tabs.query({active:true}, function(tabs) {
             $(NAME).html(organization.name);
             $(LOGO).attr('src', organization.logo);
 
+            $('#site-info-header').removeClass('hidden');
             $('#success').removeClass('hidden');
             $('#loading').addClass('hidden');
 
         } else {
             // Show no site information.
             console.log('No Data');
+            // set the org name to the URL
+            $(NAME).html(tmp.href);
+            // get the site's favicon to use as the logo
+            var favicon = 'http://www.google.com/s2/favicons?domain=' + tmp.href
+            console.log(favicon);
+            $(LOGO).attr('src', favicon);
+
+            $('#site-info-header').removeClass('hidden');
             $('#no-success').removeClass('hidden');
             $('#loading').addClass('hidden');
         }
@@ -124,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function openMorePage() {
-    var link = "/src/more.html"
+    var link = "/more.html"
     newWindow = window.open(link, '_blank');
     newWindow.focus();
 }
