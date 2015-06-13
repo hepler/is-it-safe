@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html data-ng-app="isItSafeApp" data-ng-csp="">
+    <head>
+        <title>Is It Safe?</title>
+        <link rel="stylesheet" type="text/css" href="css/styles-main.css">
+		<link rel="stylesheet" href="css/font-awesome.css">
+		<script src="js/angular/angular.min.js"></script>
+		<script src="js/jquery/jquery.min.js"></script>
+		<!-- Main entry point for extension. -->
+        <script src="js/index.js"></script>
+		<script src="js/app/app.js"></script>
+		<script src="js/app/popup.js"></script>
+
+    </head>
+
+    <body>
+        <div id="header">
+            <div id="ext-logo">
+				<img id="lock-logo" src="img/logo-grey.png">
+            </div>
+			<div id="ext-name">
+				Is It Safe?
+			</div>
+        </div>
+		<div style="clear:both"></div>
+
+		<!-- pre loader -->
+		<div id="loading">
+			<i class="fa fa-cog fa-spin fa-5x"></i>
+		</div>
+
+		<!-- site info found successfully -->
+		<div id="success" class="hidden">
+			<div class="info-wrapper">
+		        <div id="site-info" class="boxShadow">
+					<div id="site-name"></div>
+					<div id="site-logo">
+						<img id="logo" src="">
+					</div>
+				</div>
+	        </div>
+	<!--
+			<div ng-controller="PageController">
+				here it is
+	            SMS: <div>{{SMS}}</div>
+	            <h2>Page:</h2>
+	            <div>{{title}}</div>
+	            <div>{{url}}</div>
+	            <h2>Has Links:</h2>
+	            <ul>
+	                <li ng-repeat="pageInfo in pageInfos">
+	                    <div>{{pageInfo.url}}</div>
+	                </li>
+	            </ul>
+	        </div> -->
+
+	        <div id="site-report" class="info-wrapper">
+	            <div id="sms" class="report-item boxShadow">
+	                <span>SMS</span>
+	                <span class="support"></span>
+	            </div>
+	            <div id="phone_call" class="report-item boxShadow">
+	                <span>Phone Call</span>
+	                <span class="support"></span>
+	            </div>
+	            <div id="email" class="report-item boxShadow">
+	                <span>Email</span>
+	                <span class="support"></span>
+	            </div>
+	            <div id="hardware_token" class="report-item boxShadow">
+	                <span>Hardware Token</span>
+	                <span class="support"></span>
+	            </div>
+	            <div id="software_implementation" class="report-item boxShadow">
+	                <span>Software</span>
+	                <span class="support"></span>
+	            </div>
+				<div id="sha_status" class="report-item boxShadow">
+	                <span>SHA-2 Encryption</span>
+	                <span class="support"></span>
+	            </div>
+	        </div>
+		</div>
+		<!-- end success div -->
+
+		<!-- no site data found -->
+		<div id="no-success" class="hidden">
+			<div class="indo-wrapper">
+				I'm so sorry, but there was no data available!
+				<br/><br/>
+				<hr>
+				Submit this site for data collection
+			</div>
+		</div>
+
+
+		<div id="btn-container">
+			<div id="more" class="btn">Learn More</div>
+			<div id="outreach" class="btn">Call to Action</div>
+		</div>
+
+
+    </body>
+
+
+</html>

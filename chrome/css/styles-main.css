@@ -1,0 +1,187 @@
+/*
+ * MAIN EXTENSION PAGE
+ */
+
+body {
+    width: 300px;
+    height: 100%;
+    background-color: #dedede;
+    background-image: url("/../img/diagonal.png");
+    overflow-x: hidden;
+    padding: 5px;
+    margin: 0;
+    /*border: 1px solid;
+    border-color: #ababab;
+    border-radius: 2px;*/
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.boxShadow {
+    box-shadow: inset 1px 1px 5px #999;
+}
+
+/*
+ * header
+ */
+
+#header {
+    margin: 0 0 10px 0;
+}
+
+#ext-logo {
+    text-align: center;
+    display: inline-block;
+    width: 25%;
+
+    float: left;
+    height: 20px;
+}
+
+#lock-logo {
+    height: 60px;
+}
+
+#ext-name {
+    width: 60%;
+    display: inline-block;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: #ababab;
+    font-size: 24px;
+    margin: 15px 10px 10px 0px;
+    text-align: center;
+}
+
+
+/*
+ * pre-load
+ */
+
+#loading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/*
+ * site info section
+ */
+
+#site-info {
+    margin: 0 auto;
+    height: 50px;
+    padding: 5px 0 0 0;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: #cdcdcd;
+}
+
+#site-logo {
+    float: right;
+    width: 30%;
+    padding: 5px;
+    text-align: center;
+}
+
+#logo {
+    width: 40px;
+}
+
+#site-name {
+    float: left;
+    padding: 10px 0 10px 30px;
+}
+
+.info-wrapper {
+    border: 1px solid;
+    border-color: #ababab;
+    border-radius: 3px;
+    padding: 2px;
+    margin-bottom: 15px;
+}
+
+
+/*
+ * report section entry
+ */
+
+.report-item {
+     background-color: #cdcdcd;
+     margin: 2px 0;
+     padding: 10px;
+
+     text-align: left;
+     line-height: 20px;
+     font-size: 16px;
+     font-weight: bold;
+}
+
+.report-item:hover {
+    background-color: #dedede;
+}
+
+.report-item span {
+    padding-left: 10px;
+}
+
+.support {
+    float: right;
+}
+
+
+/*
+ * no info page
+ */
+
+
+
+/*
+ * buttons
+ */
+
+#btn-container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    text-align: center;
+    font-size: 14px;
+    vertical-align: middle;
+    line-height: 40px;
+
+    width: 48%;
+    height: 40px;
+    margin-bottom: 10px;
+
+    cursor: pointer;
+
+    border: 1px solid;
+    border-color: #788E77;
+    background-color: #66A366;
+    border-radius: 2px;
+    color: #ffffff;
+}
+
+.btn:hover {
+    background-color: #B5E2BB;
+    color: #788E77;
+}
+
+
+/*
+ * colors
+ */
+
+.green {
+    color:green;
+}
+
+.red {
+    color:red;
+}
