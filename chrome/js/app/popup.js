@@ -101,10 +101,14 @@ chrome.tabs.query({active:true}, function(tabs) {
             // Show no site information.
             console.log('No Data');
             // set the org name to the URL
-            $(NAME).html(tmp.href);
+            var url = tmp.href;
+            // remove the protocol, then remove trailing slashes
+            url = url.replace(/.*?:\/\//g, "");
+            url = url.replace(/\/$/, '')
+            $(NAME).html(url);
+            $(NAME).attr('style', 'font-size: 20px; padding-top: 12px ');
             // get the site's favicon to use as the logo
             var favicon = 'http://www.google.com/s2/favicons?domain=' + tmp.href
-            console.log(favicon);
             $(LOGO).attr('src', favicon);
 
             $('#site-info-header').removeClass('hidden');

@@ -81,7 +81,7 @@ body {
 
 #site-logo {
     float: right;
-    width: 30%;
+    width: 20%;
     padding: 5px;
     text-align: center;
 }
@@ -92,9 +92,15 @@ body {
 
 #site-name {
     float: left;
-    padding: 10px 0 10px 30px;
-    font-size: 14px;
+    max-width: 60%;
+    padding: 10px 0 10px 20px;
+    font-size: 30px;
     font-weight: bold;
+    text-overflow: ellipsis;
+
+     /* Required for text-overflow to do anything */
+     white-space: nowrap;
+     overflow: hidden;
 }
 
 .info-wrapper {
