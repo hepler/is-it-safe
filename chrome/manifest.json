@@ -1,0 +1,28 @@
+{
+    "name": "Is It Safe",
+    "version": "1.0",
+    "manifest_version": 2,
+    "description": "Learn whether the site you are visiting offers multi-factor authentication",
+    "homepage_url": "http://young-castle-3686.herokuapp.com/",
+    "icons": {
+        "16": "/img/logo-grey.png",
+        "48": "/img/logo-grey.png",
+        "128": "/img/logo-grey.png"
+    },
+    "background": {
+        "page": "src/bg/background.html",
+        "persistent": true
+    },
+    "options_page": "src/options/index.html",
+    "browser_action": {
+        "default_icon": "/img/logo-grey.png",
+        "default_title": "Is It Safe?",
+        "default_popup": "/new-index.html"
+    },
+    "content_scripts": [ {
+    	"js": [ "js/jquery/jquery.min.js", "js/app/content.js" ],
+    	"matches": [ "*://*/*" ],
+    	"run_at": "document_start"
+	} ],
+    "permissions": ["tabs", "http://*/", "https://*/"]
+}

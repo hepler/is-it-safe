@@ -10,16 +10,12 @@ var SOFTWARE_IMPLEMENTATION = '#software_implementation';
 var SHA_STATUS = '#sha_status';
 
 // Organization Elements
-var NAME = '#name'
+var NAME = '#site-name'
 var CATEGORY = '#category';
 var WEBSITE = '#website';
 var LOGO = '#logo';
 var TWITTER_HANDLE = '.twitter_handle';
 
-
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
-
-});
 
 chrome.tabs.query({active:true}, function(tabs) {
     var tab;
@@ -58,43 +54,40 @@ chrome.tabs.query({active:true}, function(tabs) {
             console.log(encryptionSupport);
 
             if(mfaSupport.sms) {
-                $(SMS).find('.support').addClass('fa fa-check green');
+                $(SMS).find('.support').addClass('fa fa-check fa-2x green');
             } else {
-                $(SMS).find('.support').addClass('fa fa-ban red');
+                $(SMS).find('.support').addClass('fa fa-ban fa-2x red');
             }
 
             if(mfaSupport.phone_call) {
-                $(PHONE_CALL).find('.support').addClass('fa fa-check green');;
+                $(PHONE_CALL).find('.support').addClass('fa fa-check fa-2x green');;
             } else {
-                $(PHONE_CALL).find('.support').addClass('fa fa-ban red');
+                $(PHONE_CALL).find('.support').addClass('fa fa-ban fa-2x red');
             }
 
             if(mfaSupport.email) {
-                $(EMAIL).find('.support').addClass('fa fa-check green');;
+                $(EMAIL).find('.support').addClass('fa fa-check fa-2x green');;
             } else {
-                $(EMAIL).find('.support').addClass('fa fa-ban red');
+                $(EMAIL).find('.support').addClass('fa fa-ban fa-2x red');
             }
 
             if(mfaSupport.hardware_token) {
-                $(HARDWARE_TOKEN).find('.support').addClass('fa fa-check green');;
+                $(HARDWARE_TOKEN).find('.support').addClass('fa fa-check fa-2x green');;
             } else {
-                $(HARDWARE_TOKEN).find('.support').addClass('fa fa-ban red');
+                $(HARDWARE_TOKEN).find('.support').addClass('fa fa-ban fa-2x red');
             }
 
             if(mfaSupport.software_implementation) {
-                $(SOFTWARE_IMPLEMENTATION).find('.support').addClass('fa fa-check green');;
+                $(SOFTWARE_IMPLEMENTATION).find('.support').addClass('fa fa-check fa-2x green');;
             } else {
-                $(SOFTWARE_IMPLEMENTATION).find('.support').addClass('fa fa-ban red');
+                $(SOFTWARE_IMPLEMENTATION).find('.support').addClass('fa fa-ban fa-2x red');
             }
-
-
-
 
             // Fill sha information
             if(encryptionSupport.sha_status) {
-                $(SHA_STATUS).find('.support').addClass('fa fa-check green');;
+                $(SHA_STATUS).find('.support').addClass('fa fa-check fa-2x green');;
             } else {
-                $(SHA_STATUS).find('.support').addClass('fa fa-ban red');
+                $(SHA_STATUS).find('.support').addClass('fa fa-ban fa-2x red');
             }
 
             // Fill site information
@@ -118,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function openMorePage() {
-    var link = "more.html"
+    var link = "/src/more.html"
     newWindow = window.open(link, '_blank');
     newWindow.focus();
 }

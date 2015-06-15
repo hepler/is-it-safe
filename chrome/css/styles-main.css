@@ -1,0 +1,214 @@
+/*
+ * MAIN EXTENSION PAGE
+ */
+
+body {
+    width: 300px;
+    height: 100%;
+    background-color: #dedede;
+    background-image: url("/../img/diagonal.png");
+    overflow-x: hidden;
+    padding: 5px;
+    margin: 0;
+    /*border: 1px solid;
+    border-color: #ababab;
+    border-radius: 2px;*/
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: #333333;
+}
+
+.boxShadow {
+    box-shadow: inset 1px 1px 5px #999;
+}
+
+/*
+ * header
+ */
+
+#header {
+    margin: 0 0 10px 0;
+}
+
+#ext-logo {
+    text-align: center;
+    display: inline-block;
+    width: 25%;
+
+    float: left;
+    height: 20px;
+}
+
+#lock-logo {
+    height: 60px;
+}
+
+#ext-name {
+    width: 60%;
+    display: inline-block;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: #ababab;
+    font-size: 24px;
+    margin: 15px 10px 10px 0px;
+    text-align: center;
+}
+
+
+/*
+ * pre-load
+ */
+
+#loading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/*
+ * site info section
+ */
+
+#site-info {
+    margin: 0 auto;
+    height: 50px;
+    padding: 5px 0 0 0;
+    background-color: #cdcdcd;
+}
+
+#site-logo {
+    float: right;
+    width: 20%;
+    padding: 5px;
+    text-align: center;
+}
+
+#logo {
+    width: 40px;
+}
+
+#site-name {
+    float: left;
+    max-width: 60%;
+    padding: 10px 0 10px 20px;
+    font-size: 30px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+
+     /* Required for text-overflow to do anything */
+     white-space: nowrap;
+     overflow: hidden;
+}
+
+.info-wrapper {
+    border: 1px solid;
+    border-color: #ababab;
+    border-radius: 3px;
+    padding: 2px;
+    margin-bottom: 15px;
+}
+
+
+/*
+ * report section entry
+ */
+
+.report-item {
+     background-color: #cdcdcd;
+     margin: 2px;
+     padding: 10px;
+
+     text-align: left;
+     line-height: 20px;
+     font-size: 16px;
+     font-weight: bold;
+}
+
+/*.report-item:hover {
+    background-color: #dedede;
+}*/
+
+.report-item span {
+    padding-left: 10px;
+}
+
+.support {
+    float: right;
+}
+
+
+/*
+ * no info page
+ */
+#no-success {
+    /*margin: 30px 0;*/
+}
+
+#no-data {
+    text-align: center;
+}
+
+#no-data h1 {
+    margin: 5px 0;
+    font-weight: bolder;
+}
+
+
+/*
+ * buttons
+ */
+
+#btn-container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    text-align: center;
+    font-size: 14px;
+    vertical-align: middle;
+    line-height: 40px;
+
+    width: 48%;
+    height: 40px;
+    margin-bottom: 10px;
+
+    cursor: pointer;
+
+    border: 1px solid;
+    border-color: #788E77;
+    background-color: #66A366;
+    border-radius: 2px;
+    color: #ffffff;
+}
+
+.wide{
+    width: 100%;
+    background-color: #789EC1;
+}
+
+.btn:hover {
+    background-color: #B5E2BB;
+    color: #333333;
+}
+
+.wide:hover {
+    background-color: #91B8D8;
+}
+
+
+/*
+ * colors
+ */
+
+.green {
+    color:green;
+}
+
+.red {
+    color:red;
+}
