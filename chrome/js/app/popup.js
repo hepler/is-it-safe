@@ -14,7 +14,7 @@ var NAME = '#site-name'
 var CATEGORY = '#category';
 var WEBSITE = '#website';
 var LOGO = '#logo';
-var TWITTER_HANDLE = '.twitter_handle';
+// var TWITTER_HANDLE = '.twitter_handle';
 
 chrome.tabs.query({active:true}, function(tabs) {
     var tab;
@@ -29,9 +29,10 @@ chrome.tabs.query({active:true}, function(tabs) {
     var tmp = document.createElement('a');
     tmp.href=tab.url
 
-    console.log(tab);
-    console.log(tmp.href);
+    // console.log(tab);
+    // console.log(tmp.href);
 
+    // query the API for this site
     var request = $.ajax({
       url: 'https://young-castle-3686.herokuapp.com/api/organization/',
       type: 'GET',
@@ -40,44 +41,53 @@ chrome.tabs.query({active:true}, function(tabs) {
     });
 
     request.done(function(data) {
-        console.log(data);
-        console.log(data);
+
+        // console.log(data);
+
         if(data.length) {
-            console.log('Has Data')
+
+            // console.log('Has Data')
+
+            // keep track of how many saftey metrics they pass
+            var metricScore = 0;
+
+            // access the organization object returned from the API
             var organization = data[0];
             var mfaSupport = organization.mfa_support;
             var encryptionSupport = organization.encryption_support;
 
-            console.log(organization);
-            console.log(mfaSupport);
-            console.log(encryptionSupport);
 
             if(mfaSupport.sms) {
                 $(SMS).find('.support').addClass('fa fa-check fa-2x green');
+                metricScore++;
             } else {
                 $(SMS).find('.support').addClass('fa fa-ban fa-2x red');
             }
 
             if(mfaSupport.phone_call) {
                 $(PHONE_CALL).find('.support').addClass('fa fa-check fa-2x green');
+                metricScore++;
             } else {
                 $(PHONE_CALL).find('.support').addClass('fa fa-ban fa-2x red');
             }
 
             if(mfaSupport.email) {
                 $(EMAIL).find('.support').addClass('fa fa-check fa-2x green');
+                metricScore++;
             } else {
                 $(EMAIL).find('.support').addClass('fa fa-ban fa-2x red');
             }
 
             if(mfaSupport.hardware_token) {
                 $(HARDWARE_TOKEN).find('.support').addClass('fa fa-check fa-2x green');
+                metricScore++;
             } else {
                 $(HARDWARE_TOKEN).find('.support').addClass('fa fa-ban fa-2x red');
             }
 
             if(mfaSupport.software_implementation) {
                 $(SOFTWARE_IMPLEMENTATION).find('.support').addClass('fa fa-check fa-2x green');
+                metricScore++;
             } else {
                 $(SOFTWARE_IMPLEMENTATION).find('.support').addClass('fa fa-ban fa-2x red');
             }
@@ -89,13 +99,25 @@ chrome.tabs.query({active:true}, function(tabs) {
                 $(SHA_STATUS).find('.support').addClass('fa fa-ban fa-2x red');
             }
 
-            // Fill site information
+            // Fill in the site information
             $(NAME).html(organization.name);
             $(LOGO).attr('src', organization.logo);
 
+            // show the header and success div, and hide the pre-loader
             $('#site-info-header').removeClass('hidden');
             $('#success').removeClass('hidden');
             $('#loading').addClass('hidden');
+
+
+            // if they don't offer any MFA, add the 'tweet at them' button
+            if(metricScore == 0 && organization.twitter_handle != ''){
+                // console.log('TWITTER HANDLE IS: ');
+                // console.log(organization.twitter_handle)
+                var tweetText =  'https://twitter.com/share?url=http%3A%2F%2Ftwofactorauth.org&amp;text=Security+is+important%2C+%40' + organization.twitter_handle +  '.+We%27d+like+it+if+you+supported+multi-factor+auth.&amp;hashtags=SupportTwoFactorAuth';
+                // insert tweet text and show the twitter button
+                $('#no-mfa a').attr('href', tweetText);
+                $('#no-mfa').removeClass('hidden');
+            }
 
         } else {
             // Show no site information.
@@ -111,6 +133,7 @@ chrome.tabs.query({active:true}, function(tabs) {
             var favicon = 'http://www.google.com/s2/favicons?domain=' + tmp.href
             $(LOGO).attr('src', favicon);
 
+            // show the header and no-success div, and hide the pre-loader
             $('#site-info-header').removeClass('hidden');
             $('#no-success').removeClass('hidden');
             $('#loading').addClass('hidden');
@@ -124,46 +147,14 @@ chrome.tabs.query({active:true}, function(tabs) {
     });
 })
 
+// handle button clicks for 'learn more'
 document.addEventListener('DOMContentLoaded', function () {
       document.querySelector('#more').addEventListener('click', openMorePage);
 });
+
 
 function openMorePage() {
     var link = "/more.html"
     newWindow = window.open(link, '_blank');
     newWindow.focus();
 }
-
-//
-// myApp.service('pageInfoService', function() {
-//     this.getInfo = function(callback) {
-//         var model = {};
-//
-//         chrome.tabs.query({'active': true},
-//         function (tabs) {
-//             if (tabs.length > 0)
-//             {
-//                 model.title = tabs[0].title;
-//                 model.url = tabs[0].url;
-//
-//                 chrome.tabs.sendMessage(tabs[0].id, { 'action': 'PageInfo' }, function (response) {
-//                     model.pageInfos = response;
-//                     callback(model);
-//                 });
-//             }
-//
-//         });
-//     };
-// });
-//
-// myApp.controller("PageController", function ($scope, pageInfoService) {
-//     $scope.SMS = sms;
-//
-//     pageInfoService.getInfo(function (info) {
-//         $scope.title = info.title;
-//         $scope.url = info.url;
-//         $scope.pageInfos = info.pageInfos;
-//
-//         $scope.$apply();
-//     });
-// });

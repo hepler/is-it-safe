@@ -13,12 +13,17 @@ body {
     /*border: 1px solid;
     border-color: #ababab;
     border-radius: 2px;*/
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    /*font-family: 'Asap', "Lucida Sans Unicode", "Lucida Grande", sans-serif;*/
+    font-family: 'Armata', sans-serif;
     color: #333333;
 }
 
 .boxShadow {
     box-shadow: inset 1px 1px 5px #999;
+}
+
+a {
+    text-decoration: none;
 }
 
 /*
@@ -48,7 +53,7 @@ body {
     border-top: 1px solid;
     border-bottom: 1px solid;
     border-color: #ababab;
-    font-size: 24px;
+    font-size: 30px;
     margin: 15px 10px 10px 0px;
     text-align: center;
 }
@@ -97,10 +102,8 @@ body {
     font-size: 30px;
     font-weight: bold;
     text-overflow: ellipsis;
-
-     /* Required for text-overflow to do anything */
-     white-space: nowrap;
-     overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .info-wrapper {
@@ -111,6 +114,15 @@ body {
     margin-bottom: 15px;
 }
 
+#no-mfa {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.fa-twitter {
+    vertical-align: middle;
+}
+
 
 /*
  * report section entry
@@ -118,13 +130,17 @@ body {
 
 .report-item {
      background-color: #cdcdcd;
-     margin: 2px;
+     margin: 0 0 2px 0;
      padding: 10px;
 
      text-align: left;
      line-height: 20px;
      font-size: 16px;
      font-weight: bold;
+}
+
+.last {
+    margin: 0;
 }
 
 /*.report-item:hover {
@@ -137,6 +153,7 @@ body {
 
 .support {
     float: right;
+    margin-top: -5px;
 }
 
 
@@ -181,28 +198,45 @@ body {
 
     border: 1px solid;
     border-color: #788E77;
-    background-color: #66A366;
     border-radius: 2px;
     color: #ffffff;
 }
 
-.wide{
-    width: 100%;
+.btn-green {
+    background-color: #66A366;
+}
+
+.btn-green:hover {
+    background-color: #B5E2BB;
+}
+
+.btn-red {
+    background-color: #B14345;
+}
+
+.btn-red:hover {
+    background-color: #D36A66;
+}
+
+.btn-blue {
     background-color: #789EC1;
 }
 
-.btn:hover {
-    background-color: #B5E2BB;
-    color: #333333;
+.btn-blue:hover {
+    background-color: #91B8D8;
 }
 
-.wide:hover {
-    background-color: #91B8D8;
+.wide{
+    width: 98%;
+}
+
+.btn:hover {
+    color: #333333;
 }
 
 
 /*
- * colors
+ * icon colors
  */
 
 .green {

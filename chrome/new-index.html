@@ -2,8 +2,10 @@
 <html>
     <head>
         <title>Is It Safe?</title>
+        <link href='http://fonts.googleapis.com/css?family=Armata|Karla' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/font-awesome.css">
         <link rel="stylesheet" type="text/css" href="css/styles-main.css">
-		<link rel="stylesheet" href="css/font-awesome.css">
+
 		<!-- // <script src="js/angular/angular.min.js"></script> -->
 		<script src="js/jquery/jquery.min.js"></script>
 		<!-- Main entry point for extension. -->
@@ -64,11 +66,15 @@
 	                <span>Software</span>
 	                <span class="support"></span>
 	            </div>
-				<div id="sha_status" class="report-item boxShadow">
+				<div id="sha_status" class="last report-item boxShadow">
 	                <span>SHA-2 Encryption</span>
 	                <span class="support"></span>
 	            </div>
 	        </div>
+            <div id="no-mfa" class="hidden">
+                <a class="btn btn-red wide" href="" target="_blank"><i class="fa fa-twitter fa-2x"></i> Tell them to support MFA!</a>
+            </div>
+
             </div>
             <!-- end success div -->
 
@@ -79,7 +85,7 @@
                 <p>
                     Looks like we don't have <br/>data for this site yet.
                 </p>
-                <div id="submit-data" class="btn wide">add this site!</div>
+                <div id="submit-data" class="btn btn-blue wide">add this site!</div>
                 <p>
                     Click the button above to <br/>submit this site.
                 </p>
@@ -91,8 +97,8 @@
 
         <!-- buttons -->
 		<div id="btn-container">
-			<div id="more" class="btn">Learn More</div>
-			<div id="outreach" class="btn">Call to Action</div>
+			<div id="more" class="btn btn-green">Learn More</div>
+			<div id="outreach" class="btn btn-green">Call to Action</div>
 		</div>
 
 
