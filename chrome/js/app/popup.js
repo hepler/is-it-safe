@@ -50,46 +50,32 @@ chrome.tabs.query({active:true}, function(tabs) {
             var mfaSupport = organization.mfa_support;
             var encryptionSupport = organization.encryption_support;
 
-            if(mfaSupport.sms) {
-                $(SMS).find('.support').addClass('fa fa-check fa-2x green');
-                metricScore++;
-            } else {
-                $(SMS).find('.support').addClass('fa fa-ban fa-2x red');
-            }
 
-            if(mfaSupport.phone_call) {
-                $(PHONE_CALL).find('.support').addClass('fa fa-check fa-2x green');
-                metricScore++;
-            } else {
-                $(PHONE_CALL).find('.support').addClass('fa fa-ban fa-2x red');
-            }
+            // pair the div ids with their site data
+            divToDataMap = [
+                [SMS, mfaSupport.sms],
+                [PHONE_CALL, mfaSupport.phone_call],
+                [EMAIL, mfaSupport.email],
+                [HARDWARE_TOKEN, mfaSupport.hardware_token],
+                [SOFTWARE_IMPLEMENTATION, mfaSupport.software_implementation],
+                [SHA_STATUS, encryptionSupport.sha_status]
+            ];
 
-            if(mfaSupport.email) {
-                $(EMAIL).find('.support').addClass('fa fa-check fa-2x green');
-                metricScore++;
-            } else {
-                $(EMAIL).find('.support').addClass('fa fa-ban fa-2x red');
-            }
+            // iterate through the map and generate each report item
+            var arrayLength = divToDataMap.length;
+            for(var i = 0; i < arrayLength; i++) {
+                var divName = divToDataMap[i][0];
+                var dataItem = divToDataMap[i][1];
+                console.log('div: ' + divName);
+                console.log(dataItem);
+                console.log('---');
 
-            if(mfaSupport.hardware_token) {
-                $(HARDWARE_TOKEN).find('.support').addClass('fa fa-check fa-2x green');
-                metricScore++;
-            } else {
-                $(HARDWARE_TOKEN).find('.support').addClass('fa fa-ban fa-2x red');
-            }
-
-            if(mfaSupport.software_implementation) {
-                $(SOFTWARE_IMPLEMENTATION).find('.support').addClass('fa fa-check fa-2x green');
-                metricScore++;
-            } else {
-                $(SOFTWARE_IMPLEMENTATION).find('.support').addClass('fa fa-ban fa-2x red');
-            }
-
-            // Fill sha information
-            if(encryptionSupport.sha_status) {
-                $(SHA_STATUS).find('.support').addClass('fa fa-check fa-2x green');
-            } else {
-                $(SHA_STATUS).find('.support').addClass('fa fa-ban fa-2x red');
+                if(dataItem) {
+                    $(divName).find('.support').addClass('fa fa-check fa-2x');
+                    metricScore++;
+                } else {
+                    $(divName).find('.support').addClass('fa fa-ban fa-2x');
+                }
             }
 
             // Fill in the site information
