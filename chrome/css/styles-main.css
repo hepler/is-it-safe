@@ -119,10 +119,6 @@ a {
     margin-bottom: 5px;
 }
 
-.fa-twitter {
-    vertical-align: middle;
-}
-
 
 /*
  * report section entry
@@ -160,8 +156,8 @@ a {
 /*
  * no info page
  */
-#no-success {
-    /*margin: 30px 0;*/
+#submit-data {
+    font-size: 16px;
 }
 
 #no-data {
@@ -189,6 +185,8 @@ a {
     font-size: 14px;
     vertical-align: middle;
     line-height: 40px;
+
+    outline: none;
 
     width: 48%;
     height: 40px;
@@ -234,10 +232,13 @@ a {
     color: #333333;
 }
 
-
 /*
- * icon colors
+ * icons
  */
+
+.fa {
+    vertical-align: middle;
+}
 
 .green {
     color:green;

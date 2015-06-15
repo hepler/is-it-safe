@@ -29,9 +29,6 @@ chrome.tabs.query({active:true}, function(tabs) {
     var tmp = document.createElement('a');
     tmp.href=tab.url
 
-    // console.log(tab);
-    // console.log(tmp.href);
-
     // query the API for this site
     var request = $.ajax({
       url: 'https://young-castle-3686.herokuapp.com/api/organization/',
@@ -42,12 +39,9 @@ chrome.tabs.query({active:true}, function(tabs) {
 
     request.done(function(data) {
 
-        // console.log(data);
-
+        // if we do have data on the organization, fill in the fields of the
+        // popup with the appropriate metrics
         if(data.length) {
-
-            // console.log('Has Data')
-
             // keep track of how many saftey metrics they pass
             var metricScore = 0;
 
@@ -55,7 +49,6 @@ chrome.tabs.query({active:true}, function(tabs) {
             var organization = data[0];
             var mfaSupport = organization.mfa_support;
             var encryptionSupport = organization.encryption_support;
-
 
             if(mfaSupport.sms) {
                 $(SMS).find('.support').addClass('fa fa-check fa-2x green');
@@ -111,8 +104,6 @@ chrome.tabs.query({active:true}, function(tabs) {
 
             // if they don't offer any MFA, add the 'tweet at them' button
             if(metricScore == 0 && organization.twitter_handle != ''){
-                // console.log('TWITTER HANDLE IS: ');
-                // console.log(organization.twitter_handle)
                 var tweetText =  'https://twitter.com/share?url=http%3A%2F%2Ftwofactorauth.org&amp;text=Security+is+important%2C+%40' + organization.twitter_handle +  '.+We%27d+like+it+if+you+supported+multi-factor+auth.&amp;hashtags=SupportTwoFactorAuth';
                 // insert tweet text and show the twitter button
                 $('#no-mfa a').attr('href', tweetText);
@@ -121,7 +112,6 @@ chrome.tabs.query({active:true}, function(tabs) {
 
         } else {
             // Show no site information.
-            console.log('No Data');
             // set the org name to the URL
             var url = tmp.href;
             // remove the protocol, then remove trailing slashes
@@ -147,14 +137,14 @@ chrome.tabs.query({active:true}, function(tabs) {
     });
 })
 
-// handle button clicks for 'learn more'
-document.addEventListener('DOMContentLoaded', function () {
-      document.querySelector('#more').addEventListener('click', openMorePage);
-});
-
-
-function openMorePage() {
-    var link = "/more.html"
-    newWindow = window.open(link, '_blank');
-    newWindow.focus();
-}
+// // handle button clicks for 'learn more'
+// document.addEventListener('DOMContentLoaded', function () {
+//       document.querySelector('#more').addEventListener('click', openMorePage);
+// });
+//
+//
+// function openMorePage() {
+//     var link = "/more.html"
+//     newWindow = window.open(link, '_blank');
+//     newWindow.focus();
+// }

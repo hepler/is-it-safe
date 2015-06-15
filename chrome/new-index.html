@@ -6,11 +6,8 @@
         <link rel="stylesheet" href="css/font-awesome.css">
         <link rel="stylesheet" type="text/css" href="css/styles-main.css">
 
-		<!-- // <script src="js/angular/angular.min.js"></script> -->
 		<script src="js/jquery/jquery.min.js"></script>
 		<!-- Main entry point for extension. -->
-        <!-- // <script src="js/index.js"></script> -->
-		<!-- // <script src="js/app/app.js"></script> -->
 		<script src="js/app/popup.js"></script>
 
     </head>
@@ -25,6 +22,7 @@
 			</div>
         </div>
 		<div style="clear:both"></div>
+
 
 		<!-- pre loader -->
 		<div id="loading">
@@ -74,18 +72,17 @@
             <div id="no-mfa" class="hidden">
                 <a class="btn btn-red wide" href="" target="_blank"><i class="fa fa-twitter fa-2x"></i> Tell them to support MFA!</a>
             </div>
-
             </div>
-            <!-- end success div -->
+
 
             <!-- no site data found -->
             <div id="no-success" class="info-wrapper hidden">
             <div id="no-data" class="report-item boxShadow">
-	            <h1>oh no!</h1>
+	            <h1><i>oh no!</i></h1>
                 <p>
                     Looks like we don't have <br/>data for this site yet.
                 </p>
-                <div id="submit-data" class="btn btn-blue wide">add this site!</div>
+                <div id="submit-data" class="btn btn-blue wide">add this site</div>
                 <p>
                     Click the button above to <br/>submit this site.
                 </p>
@@ -93,12 +90,12 @@
             </div>
 
         </div>
-        <!-- end site report div -->
+
 
         <!-- buttons -->
 		<div id="btn-container">
-			<div id="more" class="btn btn-green">Learn More</div>
-			<div id="outreach" class="btn btn-green">Call to Action</div>
+            <a class="btn btn-green" href="/more.html" target="_blank"><i class="fa fa-question fa-3x"></i></a>
+            <a class="btn btn-green" href="https://twofactorauth.org" target="_blank"><i class="fa fa-list-ul fa-3x"></i></a>
 		</div>
 
 
