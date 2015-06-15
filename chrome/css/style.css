@@ -26,6 +26,7 @@ a {
     text-decoration: none;
 }
 
+
 /*
  * header
  */
@@ -237,6 +238,10 @@ a {
 /*
  * icons
  */
+
+i {
+ margin-right: 5px;
+}
 
 .fa {
     vertical-align: middle;

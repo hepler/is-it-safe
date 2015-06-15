@@ -66,13 +66,11 @@ chrome.tabs.query({active:true}, function(tabs) {
             for(var i = 0; i < arrayLength; i++) {
                 var divName = divToDataMap[i][0];
                 var dataItem = divToDataMap[i][1];
-                console.log('div: ' + divName);
-                console.log(dataItem);
-                console.log('---');
 
+                // if affirmative, add the check mark and increase metricScore
                 if(dataItem) {
                     $(divName).find('.support').addClass('fa fa-check fa-2x');
-                    metricScore++;
+                    if(divName != SHA_STATUS) metricScore++;
                 } else {
                     $(divName).find('.support').addClass('fa fa-ban fa-2x');
                 }
@@ -87,24 +85,27 @@ chrome.tabs.query({active:true}, function(tabs) {
             $('#success').removeClass('hidden');
             $('#loading').addClass('hidden');
 
-
             // if they don't offer any MFA, add the 'tweet at them' button
             if(metricScore == 0 && organization.twitter_handle != ''){
-                var tweetText =  'https://twitter.com/share?url=http%3A%2F%2Ftwofactorauth.org&amp;text=Security+is+important%2C+%40' + organization.twitter_handle +  '.+We%27d+like+it+if+you+supported+multi-factor+auth.&amp;hashtags=SupportTwoFactorAuth';
+                var tweetText =  'https://twitter.com/share?url=' + 'http%3A%2F%2Ftwofactorauth.org&amp;text=Security+is+' +
+                'important%2C+%40' + organization.twitter_handle +  '.+We%27d+like+it+if+you+supported+multi-factor+auth.&amp;' + 'hashtags=SupportTwoFactorAuth';
                 // insert tweet text and show the twitter button
                 $('#no-mfa a').attr('href', tweetText);
                 $('#no-mfa').removeClass('hidden');
             }
 
+        // if we do not have this organization
+        // show div to allow user to add the org to our list
         } else {
-            // Show no site information.
             // set the org name to the URL
             var url = tmp.href;
             // remove the protocol, then remove trailing slashes
             url = url.replace(/.*?:\/\//g, "");
             url = url.replace(/\/$/, '')
+
             $(NAME).html(url);
             $(NAME).attr('style', 'font-size: 20px; padding-top: 12px ');
+
             // get the site's favicon to use as the logo
             var favicon = 'http://www.google.com/s2/favicons?domain=' + tmp.href
             $(LOGO).attr('src', favicon);
