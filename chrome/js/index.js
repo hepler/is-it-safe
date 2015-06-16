@@ -14,8 +14,8 @@ var NAME = '#site-name'
 var CATEGORY = '#category';
 var WEBSITE = '#website';
 var LOGO = '#logo';
-var TWITTER_HANDLE = '.twitter_handle';
-
+// var TWITTER_HANDLE = '.twitter_handle';
+var currentSite;
 
 chrome.tabs.query({active:true}, function(tabs) {
     var tab;
@@ -28,11 +28,10 @@ chrome.tabs.query({active:true}, function(tabs) {
     // Hack to get domain from url.
     // http://stackoverflow.com/questions/8498592/extract-root-domain-name-from-string
     var tmp = document.createElement('a');
-    tmp.href=tab.url
+    tmp.href = tab.url
+    currentSite = tmp.href;
 
-    console.log(tab);
-    console.log(tmp.href);
-
+    // query the API for this site
     var request = $.ajax({
       url: 'https://young-castle-3686.herokuapp.com/api/organization/',
       type: 'GET',
@@ -41,77 +40,116 @@ chrome.tabs.query({active:true}, function(tabs) {
     });
 
     request.done(function(data) {
-        console.log(data);
-        console.log(data);
+
+        // if we do have data on the organization, fill in the fields of the
+        // popup with the appropriate metrics
         if(data.length) {
-            console.log('Has Data')
+            // keep track of how many saftey metrics they pass
+            var metricScore = 0;
+
+            // access the organization object returned from the API
             var organization = data[0];
             var mfaSupport = organization.mfa_support;
             var encryptionSupport = organization.encryption_support;
 
-            console.log(organization);
-            console.log(mfaSupport);
-            console.log(encryptionSupport);
 
-            if(mfaSupport.sms) {
-                $(SMS).find('.support').addClass('fa fa-check fa-2x green');
-            } else {
-                $(SMS).find('.support').addClass('fa fa-ban fa-2x red');
+            // pair the div ids with their site data
+            divToDataMap = [
+                [SMS, mfaSupport.sms],
+                [PHONE_CALL, mfaSupport.phone_call],
+                [EMAIL, mfaSupport.email],
+                [HARDWARE_TOKEN, mfaSupport.hardware_token],
+                [SOFTWARE_IMPLEMENTATION, mfaSupport.software_implementation],
+                [SHA_STATUS, encryptionSupport.sha_status]
+            ];
+
+            // iterate through the map and generate each report item
+            var arrayLength = divToDataMap.length;
+            for(var i = 0; i < arrayLength; i++) {
+                var divName = divToDataMap[i][0];
+                var dataItem = divToDataMap[i][1];
+
+                // if affirmative, add the check mark and increase metricScore
+                if(dataItem) {
+                    $(divName).find('.support').addClass('fa fa-check fa-2x');
+                    if(divName != SHA_STATUS) metricScore++;
+                } else {
+                    $(divName).find('.support').addClass('fa fa-ban fa-2x');
+                }
             }
 
-            if(mfaSupport.phone_call) {
-                $(PHONE_CALL).find('.support').addClass('fa fa-check fa-2x green');;
-            } else {
-                $(PHONE_CALL).find('.support').addClass('fa fa-ban fa-2x red');
-            }
-
-            if(mfaSupport.email) {
-                $(EMAIL).find('.support').addClass('fa fa-check fa-2x green');;
-            } else {
-                $(EMAIL).find('.support').addClass('fa fa-ban fa-2x red');
-            }
-
-            if(mfaSupport.hardware_token) {
-                $(HARDWARE_TOKEN).find('.support').addClass('fa fa-check fa-2x green');;
-            } else {
-                $(HARDWARE_TOKEN).find('.support').addClass('fa fa-ban fa-2x red');
-            }
-
-            if(mfaSupport.software_implementation) {
-                $(SOFTWARE_IMPLEMENTATION).find('.support').addClass('fa fa-check fa-2x green');;
-            } else {
-                $(SOFTWARE_IMPLEMENTATION).find('.support').addClass('fa fa-ban fa-2x red');
-            }
-
-            // Fill sha information
-            if(encryptionSupport.sha_status) {
-                $(SHA_STATUS).find('.support').addClass('fa fa-check fa-2x green');;
-            } else {
-                $(SHA_STATUS).find('.support').addClass('fa fa-ban fa-2x red');
-            }
-
-            // Fill site information
+            // Fill in the site information
             $(NAME).html(organization.name);
             $(LOGO).attr('src', organization.logo);
 
+            // show the header and success div, and hide the pre-loader
+            $('#site-info-header').removeClass('hidden');
+            $('#success').removeClass('hidden');
+            $('#loading').addClass('hidden');
+
+            // if they don't offer any MFA, add the 'tweet at them' button
+            if(metricScore == 0 && organization.twitter_handle != ''){
+                var tweetText =  'https://twitter.com/share?url=' + 'http%3A%2F%2Ftwofactorauth.org&amp;text=Security+is+' +
+                'important%2C+%40' + organization.twitter_handle +  '.+We%27d+like+it+if+you+supported+multi-factor+auth.&amp;' + 'hashtags=SupportTwoFactorAuth';
+                // insert tweet text and show the twitter button
+                $('#no-mfa a').attr('href', tweetText);
+                $('#no-mfa').removeClass('hidden');
+            }
+
+        // if we do not have this organization
+        // show div to allow user to add the org to our list
         } else {
-            // Show no site information.
-            console.log('No Data');
+            // set the org name to the URL
+            var url = tmp.href;
+            // remove the protocol, then remove trailing slashes
+            url = url.replace(/.*?:\/\//g, "");
+            url = url.replace(/\/$/, '')
+
+            $(NAME).html(url);
+            $(NAME).attr('style', 'font-size: 20px; padding-top: 12px ');
+
+            // get the site's favicon to use as the logo
+            var favicon = 'http://www.google.com/s2/favicons?domain=' + tmp.href
+            $(LOGO).attr('src', favicon);
+
+            // show the header and no-success div, and hide the pre-loader
+            $('#site-info-header').removeClass('hidden');
+            $('#no-success').removeClass('hidden');
+            $('#loading').addClass('hidden');
         }
     });
 
-    request.fail(function(jqXHR, textStatus) {
-        // Recommend other sites.
-        // Show no site data element.
-    });
+    // request.fail(function(jqXHR, textStatus) {
+    //     // Recommend other sites.
+    //     // Show no site data element.
+    //
+    // });
 })
 
+// handle button clicks for 'add site' button
 document.addEventListener('DOMContentLoaded', function () {
-      document.querySelector('#more').addEventListener('click', openMorePage);
+      document.querySelector('#add-site').addEventListener('click', addSite);
 });
 
-function openMorePage() {
-    var link = "/src/more.html"
-    newWindow = window.open(link, '_blank');
-    newWindow.focus();
+
+function addSite() {
+    // replace button text with spinner
+    document.getElementById('add-site').style.pointerEvents = 'none';
+    $('#add-site').html('<i class="fa fa-cog fa-spin fa-lg"></i>');
+
+    // send ajax request to
+    var request = $.ajax({
+        url: 'https://young-castle-3686.herokuapp.com/add_site/',
+        type: 'POST',
+        data: {'site': currentSite},
+        success: function(resp) {
+            $('#no-data').addClass('hidden');
+            $('#submitted').removeClass('hidden');
+            if (resp.status == 'ok') {
+                // console.log("site added successfully");
+            } else {
+                // console.log("site not added successfully");
+            }
+        }
+    });
 }
