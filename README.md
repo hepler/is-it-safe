@@ -1,4 +1,4 @@
-# is it safe?
+# Is It Safe?
 Learn whether the sites you visit protect your data.
 
 ### MULTI-FACTOR AUTHENTICATION
