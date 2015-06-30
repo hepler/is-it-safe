@@ -17,7 +17,7 @@ var LOGO = '#logo';
 // var TWITTER_HANDLE = '.twitter_handle';
 var currentSite;
 
-chrome.tabs.query({active:true}, function(tabs) {
+chrome.tabs.query({currentWindow: true, active:true}, function(tabs) {
     var tab;
     if (tabs.length) {
         tab = tabs[0];
