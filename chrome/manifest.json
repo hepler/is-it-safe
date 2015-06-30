@@ -3,14 +3,15 @@
     "version": "0.0.1",
     "manifest_version": 2,
     "description": "Learn whether the sites you visit protect your data.",
+    "short_name": "Is It Safe",
     "homepage_url": "http://young-castle-3686.herokuapp.com/",
     "icons": {
-        "16": "/img/logo-grey.png",
-        "48": "/img/logo-grey.png",
-        "128": "/img/logo-grey.png"
+        "16": "/img/logo-16.png",
+        "48": "/img/logo-48.png",
+        "128": "/img/logo-128.png"
     },
     "browser_action": {
-        "default_icon": "/img/logo-grey.png",
+        "default_icon": "/img/logo.png",
         "default_title": "Is It Safe?",
         "default_popup": "/index.html"
     },
