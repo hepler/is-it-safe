@@ -16,3 +16,6 @@ For example, a site may send a text message directly to your phone. This message
 This extension is designed to help you learn about the sites that you visit. The extension displays several important metrics about the MFA and encryption techniques a website offers.
 
 Knowing which sites use multi-factor authentication and strong encryption practices can help you decide where to share your personal information.
+
+#### Now available for the Chrome browser in the Chrome Web Store
+Get ['Is It Safe' for Chrome](https://chrome.google.com/webstore/detail/is-it-safe/jmppobhogabhaifcikcjkilmmclfhdjd)
