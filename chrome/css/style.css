@@ -10,10 +10,6 @@ body {
     overflow-x: hidden;
     padding: 5px;
     margin: 0;
-    /*border: 1px solid;
-    border-color: #ababab;
-    border-radius: 2px;*/
-    /*font-family: 'Asap', "Lucida Sans Unicode", "Lucida Grande", sans-serif;*/
     font-family: 'Armata', sans-serif;
     color: #333333;
 }
@@ -55,7 +51,7 @@ a {
     border-bottom: 1px solid;
     border-color: #ababab;
     font-size: 30px;
-    margin: 15px 10px 10px 0px;
+    margin: 12px 10px 10px 0px;
     text-align: center;
 }
 
@@ -140,10 +136,6 @@ a {
     margin: 0;
 }
 
-/*.report-item:hover {
-    background-color: #dedede;
-}*/
-
 .report-item span {
     padding-left: 10px;
 }
@@ -157,10 +149,6 @@ a {
 /*
  * no info page
  */
-
-/*#submit-data {
-    font-size: 16px;
-}*/
 
 #submitted {
     text-align: center;

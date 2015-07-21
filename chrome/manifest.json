@@ -4,7 +4,7 @@
     "manifest_version": 2,
     "description": "Learn whether the sites you visit protect your data.",
     "short_name": "Is It Safe",
-    "homepage_url": "http://young-castle-3686.herokuapp.com/",
+    "homepage_url": "http://www.checkthis.site",
     "icons": {
         "16": "/img/logo-16.png",
         "48": "/img/logo-48.png",
