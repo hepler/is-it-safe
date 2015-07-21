@@ -19,3 +19,5 @@ Knowing which sites use multi-factor authentication and strong encryption practi
 
 #### Now available for the Chrome browser in the Chrome Web Store
 Get ['Is It Safe' for Chrome](https://chrome.google.com/webstore/detail/is-it-safe/jmppobhogabhaifcikcjkilmmclfhdjd)
+
+Learn more about MFA at [Check This Site](http://www.checkthis.site)
