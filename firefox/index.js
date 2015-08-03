@@ -8,8 +8,12 @@ var PANEL_WIDTH = 313;
 var PANEL_HEIGHT_LARGE = 485;
 var PANEL_HEIGHT_SMALL = 290;
 
+var getRequestURLBase = 'https://young-castle-3686.herokuapp.com/' +
+                        'api/organization/?format=json&search='
+
+// The button displayed in the browser
 var button = ToggleButton({
-    id: 'my-button',
+    id: 'open-panel',
     label: 'Is It Safe?',
     icon: {
         '16': './img/logo-16.png',
@@ -19,19 +23,20 @@ var button = ToggleButton({
     onChange: handleChange
 });
 
-
+// Create the panel to display the site report info
 var panel = panels.Panel({
     contentURL: self.data.url('index.html'),
     contentScriptFile: [self.data.url('./js/jquery/jquery.min.js'), self.data.url('./js/panelContentScript.js')],
     onHide: handleHide
 });
 
+
 // When the button is clicked and the panel is not showing, start the
 // sequence of events for a site report. First, the panel is reset. After the
 // panel is reset, the createNewPanel event below is triggered.
 function handleChange(state) {
     if (state.checked) {
-        panel.resize(PANEL_WIDTH, PANEL_HEIGHT_LARGE);
+        panel.resize(PANEL_WIDTH, PANEL_HEIGHT_SMALL);
         panel.port.emit('resetPanel');
     }
 }
@@ -49,7 +54,6 @@ panel.port.on('createNewPanel', function() {
         currentSite = currentSite.substr(0, currentSite.length - 1);
     }
 
-    var getRequestURLBase = 'http://localhost:8000/api/organization/?format=json&search='
     var fullGetRequestURL = getRequestURLBase + currentSite;
 
     // Create the new GET request
@@ -60,6 +64,7 @@ panel.port.on('createNewPanel', function() {
             // Pass the URL and site report to the content script
             panel.port.emit('currentSite', currentSite);
             panel.port.emit('siteReportData', response.json);
+            panel.resize(PANEL_WIDTH, PANEL_HEIGHT_LARGE);
         }
     });
 
@@ -71,23 +76,24 @@ panel.port.on('createNewPanel', function() {
 });
 
 
-// get the add site click
+// Create and send a new site request after the button click.
 panel.port.on('newSiteRequest', function (siteRequest) {
     var Request = require('sdk/request').Request;
     var addSiteRequest = Request({
-        url: 'http://localhost:8000/add_site/',
+        url: 'https://young-castle-3686.herokuapp.com/add_site/',
         content: {'site': tabs.activeTab.url},
         onComplete: function (response) {
+            // Inform the content script to display the "sent" message
             panel.port.emit('sentSiteRequest');
             panel.resize(PANEL_WIDTH, PANEL_HEIGHT_SMALL);
         }
     });
-
+    
     addSiteRequest.post();
-
 });
 
-// handle extension button clicks to hide the panel
+
+// Handle extension button clicks to hide the panel
 function handleHide() {
     button.state('window', {checked: false});
 }

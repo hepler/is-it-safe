@@ -17,10 +17,12 @@ var LOGO = '#logo';
 
 var currentSite;
 
+
 // Set variable of the site currently being checked
 self.port.on('currentSite', function (data) {
     currentSite = data;
 });
+
 
 // Handle the site report info passed in from index.js
 self.port.on('siteReportData', function (data) {
@@ -86,20 +88,17 @@ self.port.on('siteReportData', function (data) {
         // Use the URL as the org's name in the html header
         $(NAME).html(currentSite);
         $(NAME).attr('style', 'font-size: 20px; padding-top: 12px ');
-        //
-        // // Get the site's favicon to use as the logo
+
+        // Get the site's favicon to use as the logo
         var favicon = 'http://www.google.com/s2/favicons?domain=' + currentSite;
         $(LOGO).attr('src', favicon);
 
         // Show the header and no-success div, and hide the pre-loader
         $('#loading').addClass('hidden');
-        // $('#success').addClass('hidden');
         $('#site-info-header').removeClass('hidden');
         $('#no-data').removeClass('hidden');
         $('#no-success').removeClass('hidden');
-
     }
-
 }); // end of self.port here
 
 
@@ -121,13 +120,11 @@ self.port.on('resetPanel', function() {
 
 // add a click event listener to the 'add site' button
 $(function() {
-    // document.querySelector('#add-site').onclick = addSite;
     document.querySelector('#add-site').addEventListener('click', addSite);
 });
 
 // if the site does not exist, allow the user to submit an 'add site' request
 function addSite() {
-    console.log('sending the site request');
     self.port.emit('newSiteRequest', 'send the ajax, yo!');
 }
 
