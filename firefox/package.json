@@ -1,14 +1,13 @@
 {
-  "title": "Is It Safe?",
-  "name": "isitsafe",
-  "version": "0.0.1",
-  "description": "An extension to help you learn whether the sites you visit protect your data.",
-  "main": "index.js",
-  "author": "",
-  "engines": {
-    "firefox": ">=38.0a1",
-    "fennec": ">=38.0a1"
-  },
-  "license": "MIT",
-  "permissions": {"private-browsing": true}
+    "title": "Is It Safe?",
+    "name": "isitsafe",
+    "version": "0.0.1",
+    "description": "An extension to help you learn whether the sites you visit protect your data.",
+    "main": "index.js",
+    "author": "checkthis.site",
+    "engines": {
+        "firefox": ">=38.0a1"
+    },
+    "license": "MIT",
+    "permissions": {"private-browsing": true}
 }

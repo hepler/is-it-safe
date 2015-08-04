@@ -118,17 +118,19 @@ self.port.on('resetPanel', function() {
 });
 
 
-// add a click event listener to the 'add site' button
+// Add a click event listener to the 'add site' button
 $(function() {
     document.querySelector('#add-site').addEventListener('click', addSite);
 });
 
-// if the site does not exist, allow the user to submit an 'add site' request
+
+// If the site does not exist, allow the user to submit an 'add site' request
 function addSite() {
-    self.port.emit('newSiteRequest', 'send the ajax, yo!');
+    self.port.emit('newSiteRequest');
 }
 
-// after the site request has been sent, display the 'thank you' message
+
+// After the site request has been sent, display the 'thank you' message
 self.port.on('sentSiteRequest', function() {
     $('#no-data').addClass('hidden');
     $('#submitted').removeClass('hidden');
