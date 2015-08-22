@@ -7,6 +7,7 @@ const tabs = require('sdk/tabs');
 var PANEL_WIDTH = 313;
 var PANEL_HEIGHT_LARGE = 485;
 var PANEL_HEIGHT_SMALL = 290;
+var PANEL_HEIGHT_EXTENDED = 545;
 
 var getRequestURLBase = 'https://young-castle-3686.herokuapp.com/' +
                         'api/organization/?format=json&search='
@@ -75,6 +76,11 @@ panel.port.on('createNewPanel', function() {
     });
 });
 
+// If there's no site report data, make the panel a little taller
+// so that it fits the "tweet at them" button
+panel.port.on('extendPanelHeight', function () {
+    panel.resize(PANEL_WIDTH, PANEL_HEIGHT_EXTENDED);
+});
 
 // Create and send a new site request after the button click.
 panel.port.on('newSiteRequest', function (siteRequest) {
@@ -88,7 +94,7 @@ panel.port.on('newSiteRequest', function (siteRequest) {
             panel.resize(PANEL_WIDTH, PANEL_HEIGHT_SMALL);
         }
     });
-    
+
     addSiteRequest.post();
 });
 
