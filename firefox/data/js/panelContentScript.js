@@ -77,9 +77,12 @@ self.port.on('siteReportData', function (data) {
         if(metricScore == 0 && organization.twitter_handle != ''){
             var tweetText = 'https://twitter.com/share?url=' + 'http%3A%2F%2Ftwofactorauth.org&amp;text=Security+is+' +
             'important%2C+%40' + organization.twitter_handle +  '.+We%27d+like+it+if+you+supported+multi-factor+auth.&amp;' + 'hashtags=SupportTwoFactorAuth';
+
             // insert tweet text and show the twitter button
             $('#no-mfa a').attr('href', tweetText);
             $('#no-mfa').removeClass('hidden');
+            // make the panel a little bigger
+            self.port.emit('extendPanelHeight');
         }
 
     // If we do not have this organization, then show the
