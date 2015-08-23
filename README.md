@@ -1,6 +1,9 @@
 # Is It Safe?
 Learn whether the sites you visit protect your data.
 
+#### Now available for the Chrome browser
+Get ['Is It Safe' for Chrome](https://chrome.google.com/webstore/detail/is-it-safe/jmppobhogabhaifcikcjkilmmclfhdjd)  in the Chrome Web Store
+
 ### MULTI-FACTOR AUTHENTICATION
 
 Multi-factor Authentication (MFA) is a way to keep your personal information secure online. By verifying that you are actually you, websites that use MFA help cut down on identity theft and loss of personal data.
@@ -23,8 +26,7 @@ This project grew out of the [Two Factor Frenzy](http://hackforchange.org/challe
 
 The website report cards generated here and via the browser extension make use of data collected by the [Two Factor Auth List](https://twofactorauth.org/) project. You can contribute on [GitHub](https://twofactorauth.org/), and check out their license [here](https://github.com/jdavis/twofactorauth/blob/master/LICENSE).
 
-#### Now available for the Chrome browser in the Chrome Web Store
-Get ['Is It Safe' for Chrome](https://chrome.google.com/webstore/detail/is-it-safe/jmppobhogabhaifcikcjkilmmclfhdjd)
+
 
 Learn more about MFA at [Check This Site](http://www.checkthis.site)
 
