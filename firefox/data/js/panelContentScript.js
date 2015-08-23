@@ -123,7 +123,7 @@ self.port.on('resetPanel', function() {
 
 // Add a click event listener to the 'add site' button
 $(function() {
-    $('#add-site').on('click', addSite());
+    document.querySelector('#add-site').addEventListener('click', addSite);
 });
 
 
