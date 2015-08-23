@@ -1,8 +1,7 @@
 # Is It Safe?
-Learn whether the sites you visit protect your data.
+#### *Learn whether the sites you visit protect your data*
 
-#### Now available for the Chrome browser
-Get ['Is It Safe' for Chrome](https://chrome.google.com/webstore/detail/is-it-safe/jmppobhogabhaifcikcjkilmmclfhdjd)  in the Chrome Web Store
+**Now available for the Chrome browser.** Get ['Is It Safe' for Chrome](https://chrome.google.com/webstore/detail/is-it-safe/jmppobhogabhaifcikcjkilmmclfhdjd)  in the Chrome Web Store
 
 ### MULTI-FACTOR AUTHENTICATION
 
